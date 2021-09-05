@@ -1,6 +1,5 @@
 package com.example.course9feature.adapters
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -40,7 +39,7 @@ class ArtistsAdapter(private var artists: List<Artist>) :
 
     override fun getItemCount(): Int = artists.size
 
-    @SuppressLint("NotifyDataSetChanged")
+
     fun update(list: List<Artist>) {
         artists = list
         notifyDataSetChanged()

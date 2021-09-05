@@ -1,4 +1,4 @@
-package com.example.course9feature.navigation.fragments
+package com.example.course9feature.ui.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -9,16 +9,20 @@ import com.example.course9feature.adapters.AlbumsAdapter
 import com.example.course9feature.data.Album
 import com.example.course9feature.data.AlbumsDataSet
 import com.example.course9feature.databinding.FragmentAlbumsBinding
+import com.example.course9feature.ui.MainActivity
+import com.example.course9feature.ui.MainViewModel
 import com.google.gson.Gson
 
 class AlbumsFragment : Fragment(R.layout.fragment_albums) {
     private lateinit var binding: FragmentAlbumsBinding
     private lateinit var albumsAdapter: AlbumsAdapter
+    private lateinit var viewModel: MainViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentAlbumsBinding.bind(view)
 
+        viewModel = (activity as MainActivity).viewModel
         setupAlbumsAdapter()
     }
 

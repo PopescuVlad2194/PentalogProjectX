@@ -5,4 +5,9 @@
     <string name="nav_search">Search</string>
     <string name="artists_data">"{\"artists\":[{\"name\": \"The Weeknd\",\"thumbnail\": \"https://psnews.ro/wp-content/uploads/2021/08/the-weeknd.jpg\",\"genre\": \"R\u0026B/Soul\",\"isLiked\": true},{\"name\": \"Avicii\",\"thumbnail\": \"https://variety.com/wp-content/uploads/2017/09/avicii.jpg\",\"genre\": \"Dance electronic\",\"isLiked\": true},{\"name\": \"Eminem\",\"thumbnail\": \"https://static.wikia.nocookie.net/ideas/images/c/c1/Eminem.JPG/revision/latest?cb\u003d20181130203245\",\"genre\": \"Hip-Hop/Rap\",\"isLiked\": true},{\"name\": \"Eminem\",\"thumbnail\": \"https://static.wikia.nocookie.net/ideas/images/c/c1/Eminem.JPG/revision/latest?cb\u003d20181130203245\",\"genre\": \"Hip-Hop/Rap\",\"isLiked\": true},{\"name\": \"Eminem\",\"thumbnail\": \"https://static.wikia.nocookie.net/ideas/images/c/c1/Eminem.JPG/revision/latest?cb\u003d20181130203245\",\"genre\": \"Hip-Hop/Rap\",\"isLiked\": true},{\"name\": \"Eminem\",\"thumbnail\": \"https://static.wikia.nocookie.net/ideas/images/c/c1/Eminem.JPG/revision/latest?cb\u003d20181130203245\",\"genre\": \"Hip-Hop/Rap\",\"isLiked\": true}]}</string>
     <string name="albums_data">"{\"albums\":[{\"name\": \"Kamikaze\",\"year\": 2018,\"isFavorite\": true},{\"name\": \"Recovery\",\"year\": 2010,\"isFavorite\": true},{\"name\": \"Encore\",\"year\": 2004,\"isFavorite\": true},{\"name\": \"Relapse\",\"year\": 2009,\"isFavorite\": true},{\"name\": \"Nothing Was the Same\",\"year\": 2013,\"isFavorite\": true}]}"</string>
+    <string name="search_bar_hint">Search artist</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="result_error">No results found, try again.</string>
+    <string name="discography_btn">Discography</string>
 </resources>
