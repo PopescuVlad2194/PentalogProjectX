@@ -38,8 +38,8 @@ class AlbumsAdapter(private var albums: MutableList<Album>) :
     ) {
         element.ivFavorite.setImageResource(
             if (currentItem.favorite)
-                R.drawable.ic_liked
-            else R.drawable.ic_notliked
+                R.drawable.ic_favorite
+            else R.drawable.ic_notfavorite
         )
     }
 

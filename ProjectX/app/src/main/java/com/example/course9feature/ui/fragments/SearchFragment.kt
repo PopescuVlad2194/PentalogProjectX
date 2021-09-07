@@ -10,10 +10,12 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.course9feature.R
 import com.example.course9feature.databinding.FragmentSearchBinding
+import com.example.course9feature.model.Artist
 import com.example.course9feature.model.Discography
 import com.example.course9feature.ui.MainActivity
 import com.example.course9feature.ui.MainViewModel
 import com.example.course9feature.util.Resource
+import com.google.android.material.snackbar.Snackbar
 
 class SearchFragment : Fragment(R.layout.fragment_search) {
     private lateinit var binding: FragmentSearchBinding
@@ -21,6 +23,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     private lateinit var artistName: String
     private lateinit var discography: Discography
     private lateinit var thumbnail: String
+    private lateinit var currentArtist: Artist
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,6 +43,12 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                 return false
             }
         })
+
+        binding.favoriteBtn.setOnClickListener {
+            viewModel.saveArtist(currentArtist)
+            Snackbar.make(view, resources.getString(R.string.add_artist_msg), Snackbar.LENGTH_SHORT)
+                .show()
+        }
 
         binding.btnArtistDiscography.setOnClickListener {
             val bundle = Bundle().apply {
@@ -69,6 +78,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                     response.data?.let { artistResponse ->
                         successUI()
                         for (element in artistResponse.artists) {
+                            currentArtist = element
                             binding.artistBiography.text = element.strBiographyEN
                             Glide.with(this@SearchFragment)
                                 .load(element.strArtistWideThumb)

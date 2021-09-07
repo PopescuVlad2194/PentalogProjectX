@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.course9feature.R
-import com.example.course9feature.data.Artist
 import com.example.course9feature.databinding.ArtistsListItemBinding
+import com.example.course9feature.model.Artist
 
-class ArtistsAdapter(private var artists: List<Artist>) :
+class ArtistsAdapter(var artists: List<Artist>) :
     RecyclerView.Adapter<ArtistsAdapter.ArtistsViewHolder>() {
 
     inner class ArtistsViewHolder(val binding: ArtistsListItemBinding) :
@@ -23,15 +23,15 @@ class ArtistsAdapter(private var artists: List<Artist>) :
     override fun onBindViewHolder(holder: ArtistsViewHolder, position: Int) {
         val list = artists[position]
         holder.binding.let { element ->
-            element.tvArtistName.text = list.name
-            element.tvArtistGenre.text = list.genre
+            element.tvArtistName.text = list.strArtist
+            element.tvArtistGenre.text = list.strGender
             checkLikeState(element, list)
             element.ivLiked.setOnClickListener {
                 list.liked = !list.liked
                 checkLikeState(element, list)
             }
             Glide.with(element.ivArtistThumbnail.context)
-                .load(list.thumbnail)
+                .load(list.strArtistThumb)
                 .centerCrop()
                 .into(element.ivArtistThumbnail)
         }
@@ -51,8 +51,8 @@ class ArtistsAdapter(private var artists: List<Artist>) :
     ) {
         holder.ivLiked.setImageResource(
             if (element.liked)
-                R.drawable.ic_liked
-            else R.drawable.ic_notliked
+                R.drawable.ic_favorite
+            else R.drawable.ic_notfavorite
         )
     }
 }
