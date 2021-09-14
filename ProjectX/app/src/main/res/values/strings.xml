@@ -12,4 +12,6 @@
     <string name="discography_btn">Discography</string>
     <string name="delete_artist_msg">Successfully deleted artist.</string>
     <string name="add_artist_msg">Artist saved successfully.</string>
+    <string name="discography_add_favorite">Album added to favorites.</string>
+    <string name="db_name">music_db.db</string>
 </resources>

@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.course9feature.databinding.DiscographyListItemBinding
 import com.example.course9feature.model.Album
 
-class DiscographyAdapter(private var albums: MutableList<Album>) :
+class DiscographyAdapter(private var albums: List<Album>) :
     RecyclerView.Adapter<DiscographyAdapter.DiscographyViewHolder>() {
+
+    var onClick: ((Album) -> Unit)? = null
 
     inner class DiscographyViewHolder(val binding: DiscographyListItemBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -19,12 +21,17 @@ class DiscographyAdapter(private var albums: MutableList<Album>) :
     }
 
     override fun onBindViewHolder(holder: DiscographyViewHolder, position: Int) {
-        val list = albums[position]
+        val currentItem = albums[position]
         holder.binding.let { element ->
-            element.albumName.text = list.strAlbum
-            element.albumYear.text = list.intYearReleased
+            element.albumName.text = currentItem.strAlbum
+            element.albumYear.text = currentItem.intYearReleased
+            element.albumFavorite.setOnClickListener {
+                currentItem.isLiked = true
+                onClick?.invoke(currentItem)
+            }
         }
     }
 
     override fun getItemCount(): Int = albums.size
+
 }

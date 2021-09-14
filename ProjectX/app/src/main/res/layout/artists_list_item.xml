@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:padding="@dimen/standard_padding_10">
 
     <View
         style="@style/divider"
@@ -22,26 +22,27 @@
         android:id="@+id/tvArtistName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="@dimen/standard_padding_10"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/ivArtistThumbnail"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvArtistGenre"
+        android:id="@+id/tvArtistStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/tvArtistName"
         app:layout_constraintTop_toBottomOf="@+id/tvArtistName" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivLiked"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toBottomOf="@id/ivArtistThumbnail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/ivArtistThumbnail" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvArtistCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/tvArtistName"
+        app:layout_constraintTop_toBottomOf="@+id/tvArtistStyle" />
 
     <View
         style="@style/divider"

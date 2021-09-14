@@ -15,4 +15,7 @@ interface ArtistDao {
 
     @Delete
     suspend fun deleteArtist(artist: Artist)
+
+    @Query("SELECT * FROM artists WHERE strArtist = :artist")
+    suspend fun searchForArtist(artist: String): Artist?
 }

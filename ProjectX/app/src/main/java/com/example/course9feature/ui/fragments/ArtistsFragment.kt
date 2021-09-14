@@ -42,6 +42,7 @@ class ArtistsFragment : Fragment(R.layout.fragment_artists) {
                 val position = viewHolder.adapterPosition
                 val artist = artistsAdapter.artists[position]
                 viewModel.deleteArtist(artist)
+
                 Snackbar.make(
                     view,
                     resources.getString(R.string.delete_artist_msg),

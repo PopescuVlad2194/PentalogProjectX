@@ -1,14 +1,12 @@
 package com.example.course9feature.adapters
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.course9feature.R
-import com.example.course9feature.data.Album
 import com.example.course9feature.databinding.AlbumsListItemBinding
+import com.example.course9feature.model.Album
 
-class AlbumsAdapter(private var albums: MutableList<Album>) :
+class AlbumsAdapter(var albums: List<Album>) :
     RecyclerView.Adapter<AlbumsAdapter.AlbumsViewHolder>() {
 
     inner class AlbumsViewHolder(val binding: AlbumsListItemBinding) :
@@ -21,39 +19,18 @@ class AlbumsAdapter(private var albums: MutableList<Album>) :
     }
 
     override fun onBindViewHolder(holder: AlbumsViewHolder, position: Int) {
-        val list = albums[position]
+        val currentItem = albums[position]
         holder.binding.let { element ->
-            element.tvAlbumName.text = list.name
-            element.tvAlbumYear.text = list.year.toString()
-            checkFavoriteState(element, list)
-            element.ivFavorite.setOnClickListener {
-                removeAt(position)
-            }
+            element.tvAlbumName.text = currentItem.strAlbum
+            element.tvAlbumYear.text = currentItem.intYearReleased
+            element.tvArtistName.text = currentItem.artist
         }
-    }
-
-    private fun checkFavoriteState(
-        element: AlbumsListItemBinding,
-        currentItem: Album
-    ) {
-        element.ivFavorite.setImageResource(
-            if (currentItem.favorite)
-                R.drawable.ic_favorite
-            else R.drawable.ic_notfavorite
-        )
     }
 
     override fun getItemCount(): Int = albums.size
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun update(list: MutableList<Album>) {
+    fun update(list: List<Album>) {
         albums = list
         notifyDataSetChanged()
-    }
-
-    private fun removeAt(position: Int) {
-        albums.removeAt(position)
-        notifyItemRemoved(position)
-        notifyItemRangeChanged(position, albums.size)
     }
 }

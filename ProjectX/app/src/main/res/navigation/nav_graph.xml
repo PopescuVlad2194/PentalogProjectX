@@ -39,5 +39,8 @@
         <argument
             android:name="thumbnail"
             app:argType="string" />
+        <argument
+            android:name="artist_name"
+            app:argType="string" />
     </fragment>
 </navigation>

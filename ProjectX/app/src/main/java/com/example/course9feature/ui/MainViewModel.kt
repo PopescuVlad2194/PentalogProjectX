@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.course9feature.model.Album
 import com.example.course9feature.model.Artist
 import com.example.course9feature.model.ArtistResponse
 import com.example.course9feature.model.Discography
@@ -18,6 +19,9 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     val artists: LiveData<Resource<ArtistResponse>> = _artists
     private val _discography: MutableLiveData<Resource<Discography>> = MutableLiveData()
     val discography: LiveData<Resource<Discography>> = _discography
+    private val _isFavorite: MutableLiveData<Artist> = MutableLiveData()
+    val isFavorite: LiveData<Artist> = _isFavorite
+
 
     fun getResult(keyword: String) = viewModelScope.launch {
         _artists.postValue(Resource.Loading())
@@ -45,7 +49,6 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return if (resultResponse.artists.isNullOrEmpty()) {
-                    Log.d("Response", "empty list")
                     Resource.Error("Empty list", null)
                 } else {
                     Resource.Success(resultResponse)
@@ -56,13 +59,28 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
     }
 
     fun saveArtist(artist: Artist) = viewModelScope.launch {
-        repository.upsert(artist)
+        repository.upsertArtist(artist)
     }
 
     fun getSavedArtists() = repository.getSavedArtists()
 
     fun deleteArtist(artist: Artist) = viewModelScope.launch {
         repository.deleteArtist(artist)
+    }
+
+    fun saveAlbum(album: Album) = viewModelScope.launch {
+        repository.upsertAlbum(album)
+    }
+
+    fun getSavedAlbums() = repository.getSavedAlbums()
+
+    fun deleteAlbum(album: Album) = viewModelScope.launch {
+        repository.deleteAlbum(album)
+    }
+
+    fun checkForArtist(artist: String) = viewModelScope.launch {
+        val response = repository.checkForArtist(artist)
+        _isFavorite.postValue(response)
     }
 
 }

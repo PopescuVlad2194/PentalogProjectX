@@ -4,18 +4,21 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.course9feature.R
+import com.example.course9feature.model.Album
 import com.example.course9feature.model.Artist
 
 @Database(
-    entities = [Artist::class],
+    entities = [Artist::class, Album::class],
     version = 1
 )
-abstract class ArtistDatabase : RoomDatabase() {
+abstract class MusicDatabase : RoomDatabase() {
     abstract fun getArtistDao(): ArtistDao
+    abstract fun getAlbumDao(): AlbumDao
 
     companion object {
         @Volatile
-        private var instance: ArtistDatabase? = null
+        private var instance: MusicDatabase? = null
         private val LOCK = Any()
 
         operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
@@ -25,8 +28,8 @@ abstract class ArtistDatabase : RoomDatabase() {
         private fun createDatabase(context: Context) =
             Room.databaseBuilder(
                 context.applicationContext,
-                ArtistDatabase::class.java,
-                "artist_db.db"
+                MusicDatabase::class.java,
+                context.getString(R.string.db_name)
             ).build()
     }
 }

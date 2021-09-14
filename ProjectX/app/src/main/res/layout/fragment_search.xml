@@ -12,7 +12,7 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/standard_margin_10"
         android:background="@drawable/search_layout"
         app:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,10 +23,10 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivDefaultBackground"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_width="@dimen/background_dimen"
+        android:layout_height="@dimen/background_dimen"
+        android:layout_marginStart="@dimen/standard_margin_10"
+        android:layout_marginEnd="@dimen/standard_margin_10"
         android:src="@drawable/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +37,7 @@
         android:id="@+id/searchResultError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/standard_margin_10"
         android:text="@string/result_error"
         android:textColor="@color/white"
         android:visibility="invisible"
@@ -49,7 +49,7 @@
         android:id="@+id/artistContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/standard_margin_10"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,16 +59,16 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/artistThumbnail"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="@dimen/wideThumb_height"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivArtistLogo"
-            android:layout_width="200dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="@dimen/logo_width"
+            android:layout_height="@dimen/logo_height"
+            android:layout_marginTop="@dimen/standard_margin_10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/artistThumbnail" />
@@ -99,22 +99,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/artistStyle" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/favoriteBtn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/ic_notfavorite"
+        <CheckBox
+            android:id="@+id/favoriteCb"
+            android:layout_width="@dimen/cb_dimen"
+            android:layout_height="@dimen/cb_dimen"
+            android:layout_marginStart="@dimen/standard_margin_10"
+            android:button="@drawable/selector_favorite_item"
             app:layout_constraintBottom_toBottomOf="@+id/btnArtistDiscography"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnArtistDiscography"
-            app:layout_constraintTop_toTopOf="@+id/btnArtistDiscography" />
+            app:layout_constraintTop_toTopOf="@+id/btnArtistDiscography"
+            app:useMaterialThemeColors="false" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/artistBiography"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/standard_margin_10"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
